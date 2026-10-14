@@ -1,0 +1,16 @@
+query associatedTargets {
+  disease(efoId: "MONDO_0005005") {
+    id
+    name
+    associatedTargets {
+      count
+      rows {
+        target {
+          id
+          approvedSymbol
+        }
+        score
+      }
+    }
+  }
+}

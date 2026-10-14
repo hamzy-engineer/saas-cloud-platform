@@ -1,0 +1,48 @@
+query RecordDetailQuery($clinicalReportId: String!) {
+  clinicalReport(clinicalReportId: $clinicalReportId) {
+    clinicalStage
+    countries
+    diseases {
+      diseaseFromSource
+      disease {
+        id
+        name
+      }
+    }
+    drugs {
+      drugFromSource
+      drug {
+        id
+        name
+      }
+    }
+    id
+    phaseFromSource
+    sideEffects {
+      diseaseFromSource
+      disease {
+        name
+      }
+    }
+    source
+    trialDescription
+    trialLiterature {
+      id
+      type
+    }
+    title
+    trialOverallStatus
+    trialPrimaryPurpose
+    trialSponsor {
+      agencyClass
+      name
+    }
+    trialStartDate
+    trialWhyStopped
+    trialStopReasonCategories
+    type
+    trialStudyType
+    url
+    year
+  }
+}

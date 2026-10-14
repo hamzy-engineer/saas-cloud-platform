@@ -1,0 +1,51 @@
+query EvaSomaticQuery($ensemblId: String!, $efoId: String!, $size: Int!, $cursor: String) {
+  disease(efoId: $efoId) {
+    id
+    eva_somatic: evidences(
+      ensemblIds: [$ensemblId]
+      enableIndirect: true
+      datasourceIds: ["eva_somatic"]
+      size: $size
+      cursor: $cursor
+    ) {
+      cursor
+      count
+      rows {
+        disease {
+          id
+          name
+        }
+        variant {
+          hgvsId
+        }
+        directionOnTarget
+        directionOnTrait
+        diseaseFromSource
+        variant {
+          id
+          hgvsId
+          referenceAllele
+          alternateAllele
+        }
+        variantRsId
+        studyId
+        clinicalSignificances
+        allelicRequirements
+        alleleOrigins
+        confidence
+        literature
+        cohortPhenotypes
+      }
+    }
+  }
+  target(ensemblId: $ensemblId) {
+    id
+    hallmarks {
+      attributes {
+        description
+        pmid
+        name
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+query OrphanetQuery($ensemblId: String!, $efoId: String!, $size: Int!) {
+  target(ensemblId: $ensemblId) {
+    approvedSymbol
+  }
+  disease(efoId: $efoId) {
+    id
+    orphanetSummary: evidences(
+      ensemblIds: [$ensemblId]
+      enableIndirect: true
+      datasourceIds: ["orphanet"]
+      size: $size
+    ) {
+      count
+      rows {
+        target {
+          id
+          approvedSymbol
+        }
+        disease {
+          id
+          name
+        }
+        directionOnTarget
+        directionOnTrait
+        diseaseFromSource
+        diseaseFromSourceId
+        diseaseFromSourceMappedId
+        targetFromSource
+        targetFromSourceId
+        alleleOrigins
+        confidence
+        literature
+        variantFunctionalConsequence {
+          id
+          label
+        }
+      }
+    }
+  }
+}

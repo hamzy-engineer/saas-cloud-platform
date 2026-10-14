@@ -1,0 +1,20 @@
+fragment TargetProfileHeaderFragment on Target {
+  synonyms {
+    label
+    source
+  }
+  functionDescriptions
+  isEssential
+  genomicLocation {
+    chromosome
+    start
+    end
+    strand
+  }
+  canonicalTranscript {
+    chromosome
+    start
+    end
+    strand
+  }
+}

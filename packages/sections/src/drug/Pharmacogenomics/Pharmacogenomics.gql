@@ -1,0 +1,37 @@
+query PharmacogenomicsQuery($chemblId: String!) {
+  drug(chemblId: $chemblId) {
+    id
+    pharmacogenomics {
+      variantAnnotation {
+        entity
+        effect
+        effectType
+        effectDescription
+        literature
+        directionality
+        baseAlleleOrGenotype
+        comparisonAlleleOrGenotype
+      }
+      variantRsId
+      genotypeId
+      variantFunctionalConsequence {
+        id
+        label
+      }
+      target {
+        id
+        approvedSymbol
+      }
+      haplotypeId
+      haplotypeFromSourceId
+      isDirectTarget
+      phenotypeFromSourceId
+      genotypeAnnotationText
+      phenotypeText
+      pgxCategory
+      evidenceLevel
+      studyId
+      literature
+    }
+  }
+}

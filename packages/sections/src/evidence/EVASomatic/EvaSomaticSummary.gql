@@ -1,0 +1,10 @@
+fragment evaSomaticSummary on Disease {
+  eva_somatic: evidences(
+    ensemblIds: [$ensgId]
+    enableIndirect: true
+    datasourceIds: ["eva_somatic"]
+    size: 1
+  ) {
+    count
+  }
+}

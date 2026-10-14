@@ -1,0 +1,147 @@
+query SearchQuery($queryString: String!, $size: Int!) {
+  topHit: search(
+    queryString: $queryString
+    entityNames: ["target", "disease", "drug", "variant", "study"]
+    page: { index: 0, size: 1 }
+  ) {
+    hits {
+      id
+      entity
+      object {
+        ... on Target {
+          id
+          approvedSymbol
+          approvedName
+          functionDescriptions
+        }
+
+        ... on Disease {
+          id
+          name
+          description
+        }
+
+        ... on Variant {
+          id
+          variantDescription
+          referenceAllele
+          alternateAllele
+          rsIds
+        }
+
+        ... on Study {
+          # entity
+          id
+          hasSumstats
+          traitFromSource
+          nSamples
+          publicationDate
+          publicationFirstAuthor
+          publicationJournal
+          studyType
+          credibleSets {
+            credibleSetsCount: count
+          }
+        }
+
+        ... on Drug {
+          id
+          name
+          description
+          mechanismsOfAction {
+            rows {
+              mechanismOfAction
+            }
+          }
+        }
+      }
+    }
+  }
+
+  targets: search(
+    queryString: $queryString
+    entityNames: ["target"]
+    page: { index: 0, size: $size }
+  ) {
+    hits {
+      id
+      entity
+      object {
+        ... on Target {
+          id
+          approvedSymbol
+          approvedName
+        }
+      }
+    }
+  }
+  diseases: search(
+    queryString: $queryString
+    entityNames: ["disease"]
+    page: { index: 0, size: $size }
+  ) {
+    hits {
+      id
+      entity
+      object {
+        ... on Disease {
+          id
+          name
+        }
+      }
+    }
+  }
+  variants: search(
+    queryString: $queryString
+    entityNames: ["variant"]
+    page: { index: 0, size: $size }
+  ) {
+    hits {
+      id
+      entity
+      object {
+        ... on Variant {
+          id
+          variantDescription
+          referenceAllele
+          alternateAllele
+          rsIds
+        }
+      }
+    }
+  }
+  studies: search(
+    queryString: $queryString
+    entityNames: ["study"]
+    page: { index: 0, size: $size }
+  ) {
+    hits {
+      id
+      entity
+      object {
+        ... on Study {
+          id
+          hasSumstats
+          traitFromSource
+          nSamples
+          studyType
+          credibleSets {
+            credibleSetsCount: count
+          }
+        }
+      }
+    }
+  }
+  drugs: search(queryString: $queryString, entityNames: ["drug"], page: { index: 0, size: $size }) {
+    hits {
+      id
+      entity
+      object {
+        ... on Drug {
+          id
+          name
+        }
+      }
+    }
+  }
+}

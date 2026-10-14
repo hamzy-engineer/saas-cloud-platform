@@ -1,0 +1,7 @@
+fragment CredibleSetEnhancerToGenePredictionsSummaryFragment on CredibleSet {
+  variant {
+    enhancerToGenes {
+      count
+    }
+  }
+}

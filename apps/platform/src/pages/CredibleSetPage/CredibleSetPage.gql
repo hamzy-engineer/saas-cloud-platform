@@ -1,0 +1,14 @@
+query CredibleSetPageQuery($studyLocusId: String!) {
+  credibleSet(studyLocusId: $studyLocusId) {
+    studyLocusId
+    variant {
+      id
+      referenceAllele
+      alternateAllele
+    }
+    study {
+      id
+      studyType
+    }
+  }
+}

@@ -1,0 +1,11 @@
+query searchTargetAggregations {
+  search(queryString: "PCSK9") {
+    aggregations {
+      total
+      entities {
+        total
+        name
+      }
+    }
+  }
+}

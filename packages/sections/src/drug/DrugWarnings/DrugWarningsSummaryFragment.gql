@@ -1,0 +1,5 @@
+fragment DrugWarningsSummaryFragment on Drug {
+   drugWarnings {
+    warningType
+  }
+}

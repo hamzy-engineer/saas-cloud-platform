@@ -1,0 +1,9 @@
+fragment VariantMolecularStructureSummaryFragment on Variant {
+  id
+  proteinCodingCoordinates {
+    count
+    rows {
+      referenceAminoAcid
+    }
+  }
+}

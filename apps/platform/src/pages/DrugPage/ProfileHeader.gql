@@ -1,0 +1,21 @@
+fragment DrugProfileHeaderFragment on Drug {
+  description
+  drugType
+  synonyms {
+    label
+    source
+  }
+  parentMolecule {
+    id
+    name
+  }
+  childMolecules {
+    id
+    name
+  }
+  maximumClinicalStage
+  tradeNames {
+    label
+    source
+  }
+}

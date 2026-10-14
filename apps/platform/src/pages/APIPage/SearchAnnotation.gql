@@ -1,0 +1,10 @@
+query searchEntity {
+  search(queryString: "KRAS") {
+    total
+    hits {
+      id
+      entity
+      description
+    }
+  }
+}
